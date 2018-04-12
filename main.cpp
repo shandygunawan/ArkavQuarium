@@ -95,9 +95,9 @@ void draw_background(Guppy& guppyIcon, Piranha& piranhaIcon, Coin& coinIcon, ULL
     std::string eggPrice_text;
     std::ostringstream str1, str2, str3, str4;
     str1 << money; money_text = str1.str();
-    str2 << HARGA_IKAN; guppyPrice_text = str2.str();
-    str3 << HARGA_PIRANHA; piranhaPrice_text = str3.str();
-    str4 << HARGA_TELUR; eggPrice_text = str4.str();
+    str2 << PRICE_GUPPY; guppyPrice_text = str2.str();
+    str3 << PRICE_PIRANHA; piranhaPrice_text = str3.str();
+    str4 << PRICE_EGG; eggPrice_text = str4.str();
 
     clear_screen();
 

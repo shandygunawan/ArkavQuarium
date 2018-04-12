@@ -3,11 +3,11 @@
 extern ULL Money;
 ULL Snail::numProduced = 0;
 
-Snail::Snail() : MovingObject(SCREEN_WIDTH/2,SCREEN_HEIGHT-BOTTOM_OFFSET) {
+Snail::Snail() : MovingObject(SCREEN_WIDTH/2,SCREEN_HEIGHT-OFFSET_BOTTOM) {
 	direction = true;
 }
 
-Snail::Snail(double locX) : MovingObject(locX,SCREEN_HEIGHT-BOTTOM_OFFSET){
+Snail::Snail(double locX) : MovingObject(locX,SCREEN_HEIGHT-OFFSET_BOTTOM){
 	direction = true;
 	id = numProduced;
 	numProduced++;
@@ -66,22 +66,22 @@ void Snail::getToCoin(LinkedList<Coin>& listCoin){
 			direction = true;
 
 			// cek jika posisi koin <= radius
-			if( abs(toGet.getX() - getX()) <= RADIUS && abs(toGet.getY() - getY()) <= RADIUS) {
+			if( abs(toGet.getX() - getX()) <= RADIUS_EAT && abs(toGet.getY() - getY()) <= RADIUS_EAT) {
 				takeCoin(toGet, listCoin);
 			}
 			else{
-				moveRight(SNAIL_SPEED);
+				moveRight(SPEED_SNAIL);
 			}
 		}
 		else { // posisi koin di sebelah kiri siput
 			direction = false;
 
 			// cek jika posisi koin <= radius
-			if( abs(getX() - toGet.getX()) <= RADIUS && abs(getY() - toGet.getY()) <= RADIUS ) {
+			if( abs(getX() - toGet.getX()) <= RADIUS_EAT && abs(getY() - toGet.getY()) <= RADIUS_EAT ) {
 				takeCoin(toGet, listCoin);
 			}
 			else{
-				moveLeft(SNAIL_SPEED);
+				moveLeft(SPEED_SNAIL);
 			}	
 		}	
 	}

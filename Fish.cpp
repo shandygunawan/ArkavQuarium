@@ -12,8 +12,8 @@ Fish::Fish(){
 	id = jumlahIkan;
 	full = true;
 	direction = true;
-	hungerCountdown = maxHungerTime;
-	fullCountdown = maxFullTime;
+	hungerCountdown = TIME_MAX_HUNGRY;
+	fullCountdown = TIME_MAX_FULL;
 	dest_y = 0;
 	dest_x = 0;
 }
@@ -61,7 +61,8 @@ void Fish::setFullCountdown(int entry){
 void Fish::eat(Food& eatenFood, LinkedList<Food>& listFood){
 	listFood.remove(eatenFood);
 	full = true;
-	fullCountdown=maxFullTime;
+	fullCountdown=TIME_MAX_FULL;
+	hungerCountdown=TIME_MAX_HUNGRY;
 }	
 
 void Fish::decreaseCountdown(){
@@ -81,20 +82,3 @@ void Fish::decreaseCountdown(){
 bool Fish::isAlive(){
 	return (hungerCountdown>0);
 }
-
-
-// //Operator overloading
-// bool Fish::operator==(Fish& a){
-// 	return ((this->id == a.id) ?  true : false);
-
-// }
-
-// Fish& Fish::operator=(Fish& other){
-// 	Fish toReturn;
-// 	toReturn.setId(other.getId());
-// 	toReturn.setFull(other.getFull());
-// 	toReturn.setDirection(other.getDirection());
-// 	toReturn.setHungerCountdown(other.getHungerCountdown());
-// 	toReturn.setFullCountdown(other.getFullCountdown());
-// 	return toReturn;
-// }

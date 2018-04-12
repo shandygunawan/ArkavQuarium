@@ -104,18 +104,18 @@ void Guppy::moveToFood(double time, LinkedList<Food>& listFood,LinkedList<Guppy>
 					sudut = atan(abs(dy/dx));
 				}
 				
-				if(abs(food_x - fish_x) <=RADIUS && abs(food_y - fish_y) <=RADIUS ){
+				if(abs(food_x - fish_x) <= RADIUS_EAT && abs(food_y - fish_y) <= RADIUS_EAT ){
 					eat(foodlock, listFood);
 					foodCount++;
 					grow();
 				}
 				else{
-					moveXby(this->direction, FISH_SPEED,sudut,time);
-					moveYby(FISH_SPEED,sudut,time);
+					moveXby(this->direction, SPEED_FISH, sudut, time);
+					moveYby(SPEED_FISH,sudut,time);
 				}
 			}
 			else { // guppy kenyang
-				if (this->hungerCountdown==maxHungerTime){
+				if (this->hungerCountdown==TIME_MAX_HUNGRY-1){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -124,7 +124,7 @@ void Guppy::moveToFood(double time, LinkedList<Food>& listFood,LinkedList<Guppy>
 				double dx = this->dest_x - this->getX();
 				double dy = this->getY() - this->dest_y;
 				double sudut = 0;
-				if(dx <= RADIUS && dy <= RADIUS){
+				if(dx <= RADIUS_MOVE && dy <= RADIUS_MOVE){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -143,12 +143,12 @@ void Guppy::moveToFood(double time, LinkedList<Food>& listFood,LinkedList<Guppy>
 				else if (dx >0 && dy<0){ //Kuadran 4
 					sudut = atan(abs(dy/dx));
 				}
-				moveXby(this->direction, FISH_SPEED,sudut,time);
-				moveYby(FISH_SPEED,sudut,time);
+				moveXby(this->direction, SPEED_FISH,sudut,time);
+				moveYby(SPEED_FISH,sudut,time);
 			}
 		}
 		else { // tidak ada makanan di akuarium
-			if (this->hungerCountdown==maxHungerTime){
+			if (this->hungerCountdown==TIME_MAX_HUNGRY-1){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -158,7 +158,7 @@ void Guppy::moveToFood(double time, LinkedList<Food>& listFood,LinkedList<Guppy>
 				double dy = this->getY() - this->dest_y;
 				double sudut = 0;
 				
-				if(dx <= RADIUS && dy <= RADIUS){
+				if(dx <= RADIUS_MOVE && dy <= RADIUS_MOVE){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -177,8 +177,8 @@ void Guppy::moveToFood(double time, LinkedList<Food>& listFood,LinkedList<Guppy>
 				else if (dx >0 && dy<0){ //Kuadran 4
 					sudut = atan(abs(dy/dx));
 				}
-				moveXby(this->direction, FISH_SPEED,sudut,time);
-				moveYby(FISH_SPEED,sudut,time);
+				moveXby(this->direction, SPEED_FISH,sudut,time);
+				moveYby(SPEED_FISH,sudut,time);
 		}
 	}
 	else { // guppy mati

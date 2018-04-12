@@ -31,7 +31,7 @@ bool MovingObject::isTop(){
 // Mengecek apakah sudah di posisi paling bawah
 bool MovingObject::isBottom(){
 	// Masih bingung
-	return (y >= SCREEN_HEIGHT-BOTTOM_OFFSET);
+	return (y >= SCREEN_HEIGHT-OFFSET_BOTTOM);
 }
 
 // Mengecek apakah sudah di posisi paling kiri
@@ -106,10 +106,10 @@ void MovingObject::moveXby(bool& dir, double v, double a, double t){
 		dir = true;
 	}
 
-	if(isRightEdge() == true && move_outer > SCREEN_WIDTH-RIGHT_OFFSET){
+	if(isRightEdge() == true && move_outer > SCREEN_WIDTH-OFFSET_RIGHT){
 
 	}
-	else if(isLeftEdge() == true && move_outer < LEFT_OFFSET){
+	else if(isLeftEdge() == true && move_outer < OFFSET_LEFT){
 
 	}
 	else{
@@ -124,7 +124,7 @@ void MovingObject::moveYby(double v, double a, double t){
 	if(isTop() == true && move_outer < 0){
 
 	}
-	else if(isBottom() == true && move_outer > SCREEN_HEIGHT-BOTTOM_OFFSET){
+	else if(isBottom() == true && move_outer > SCREEN_HEIGHT-OFFSET_BOTTOM){
 
 	}
 	else {

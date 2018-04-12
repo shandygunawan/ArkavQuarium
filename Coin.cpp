@@ -37,9 +37,9 @@ void Coin::setValue(int val){
 
 void Coin::descend(){
 	if(isBottom() == false){
-		MovingObject::descend(COIN_SPEED);
+		MovingObject::descend(SPEED_COIN);
 	}
-	else if(getY() > SCREEN_HEIGHT-BOTTOM_OFFSET){
-		setY(SCREEN_HEIGHT-BOTTOM_OFFSET);
+	else if(getY() > SCREEN_HEIGHT-OFFSET_BOTTOM){
+		setY(SCREEN_HEIGHT-OFFSET_BOTTOM);
 	}
 }

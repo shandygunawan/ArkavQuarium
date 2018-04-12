@@ -78,37 +78,37 @@ LinkedList<Snail> Aquarium::getListSnail(){
 
 void Aquarium::buyGuppy(){
 	
-	if(Money >= HARGA_IKAN){
+	if(Money >= PRICE_GUPPY){
 		int x = rand()%SCREEN_WIDTH;
-		int y = rand()%(SCREEN_HEIGHT-BOTTOM_OFFSET);
+		int y = rand()%(SCREEN_HEIGHT-OFFSET_BOTTOM);
 		Guppy newGuppy((double)x, (double)y);
 		addGuppy(newGuppy);
-		Money -= HARGA_IKAN;
+		Money -= PRICE_GUPPY;
 	}
 }
 
 void Aquarium::buyPiranha(){
-	if(Money >= HARGA_PIRANHA){
+	if(Money >= PRICE_PIRANHA){
 		int x = rand()%(SCREEN_WIDTH);
-	    int y = rand()%(SCREEN_HEIGHT-BOTTOM_OFFSET);
+	    int y = rand()%(SCREEN_HEIGHT-OFFSET_BOTTOM);
 	    Piranha newPiranha(x,y);
 	    addPiranha(newPiranha);
-	    Money -= HARGA_PIRANHA;
+	    Money -= PRICE_PIRANHA;
 	}
 }
 
 void Aquarium::buyEgg(){
-	if(Money >= HARGA_TELUR){
+	if(Money >= PRICE_EGG){
 		Egg++;
-		Money -= HARGA_TELUR;
+		Money -= PRICE_EGG;
 	}
 }
 
 void Aquarium::buyFood(double locX, double locY){
-	if(Money >= HARGA_MAKANAN){
+	if(Money >= PRICE_FOOD){
 		Food newFood(locX,locY);
 		addFood(newFood);
-		Money -= HARGA_MAKANAN;
+		Money -= PRICE_FOOD;
 	}
 }
 
@@ -169,14 +169,3 @@ void Aquarium::moveSnail(){
 		}
 	}
 }
-
-// //setter dan getter money
-// void Aquarium::increaseMoney(double amount){
-// 	Money += amount;
-// }
-// void Aquarium::decreaseMoney(double amount){
-// 	Money -= amount;
-// }
-// double Aquarium::getMoney(){
-// 	return Money;
-// }

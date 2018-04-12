@@ -13,27 +13,32 @@ extern int Egg;
 /* CONSTANTS*/
 
 //SPEED
-const double COIN_SPEED = 0.3;
-const double FOOD_SPEED = 0.5;
-const double SNAIL_SPEED = 0.2;
-const double FISH_SPEED= 100;
+const double SPEED_COIN = 0.3;
+const double SPEED_FOOD = 0.5;
+const double SPEED_SNAIL = 0.2;
+const double SPEED_FISH = 100;
 
 //OFFSET
-const int UP_OFFSET = 20;
-const int BOTTOM_OFFSET = 80;
-const int LEFT_OFFSET = 20;
-const int RIGHT_OFFSET = 20;
+const int OFFSET_TOP = 20;
+const int OFFSET_BOTTOM = 80;
+const int OFFSET_LEFT = 20;
+const int OFFSET_RIGHT = 20;
 
 //RADIUS
-const double INPUT_RADIUS = 15.0;
-const double RADIUS = 10.0;
-const double TAKE_RADIUS = 10.0;
+const double RADIUS_INPUT = 15.0;
+const double RADIUS_EAT = 10.0;
+const double RADIUS_TAKE = 10.0;
+const double RADIUS_MOVE = 5.0;
 
 //HARGA
-const int HARGA_IKAN = 20;
-const int HARGA_PIRANHA = 50;
-const int HARGA_TELUR = 1000;
-const int HARGA_MAKANAN = 2;
+const int PRICE_GUPPY = 20;
+const int PRICE_PIRANHA = 50;
+const int PRICE_EGG = 500;
+const int PRICE_FOOD = 2;
+
+//TIME
+const int TIME_MAX_FULL = 2000;
+const int TIME_MAX_HUNGRY = 3000;
 
 //CONST
 const double EPSILON = 1e-6;

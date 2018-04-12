@@ -29,9 +29,9 @@ ULL Food::getNumProduced(){
 
 void Food::descend(LinkedList<Food>& listFood){
 	if(isBottom() == false){
-		MovingObject::descend(FOOD_SPEED);
+		MovingObject::descend(SPEED_FOOD);
 	}
-	else if(getY() >= SCREEN_HEIGHT-BOTTOM_OFFSET){
+	else if(getY() >= SCREEN_HEIGHT-OFFSET_BOTTOM){
 		int idx = listFood.find(*this);
 		Food toDel;
 		toDel = listFood.get(idx);

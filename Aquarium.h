@@ -60,11 +60,6 @@ class Aquarium{
 		static void moveFood();  //fungsi untuk mengubah(mengupdate) posisi semua objek Food dalam LinkedList<Food>
 		static void moveSnail();  //fungsi untuk mengubah(mengupdate) posisi objek snail
 
-		//setter dan getter money
-		void increaseMoney(double);  //setter money
-		void decreaseMoney(double);
-		double getMoney(); //getter money
-
 		//friend 
 		friend class Fish;
 		friend class Guppy;

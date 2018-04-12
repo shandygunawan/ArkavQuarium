@@ -10,16 +10,15 @@ Piranha::Piranha(double locX, double locY) : MovingObject(locX, locY){
 
 /* METHOD */
 void Piranha::eat(Guppy& eatenGuppy, LinkedList<Guppy>& listGuppy, LinkedList<Coin>& listCoin){
-	// cout << "list size before eat : " << listGuppy.getSize() << endl;
-	cout << "eatenGuppy X : " << eatenGuppy.getX() << endl;
-	cout << "eatenGuppy Y : " << eatenGuppy.getY() << endl;
 	listGuppy.remove(eatenGuppy);
-	// cout << "list size after eat : " << listGuppy.getSize() << endl;
 	produceCoinPiranha(eatenGuppy, listCoin);
+	fullCountdown = TIME_MAX_FULL;
+	hungerCountdown = TIME_MAX_HUNGRY;
+	full = true;
 }
 
 void Piranha::produceCoinPiranha(Guppy& eatenGuppy, LinkedList<Coin>& listCoin){
-	int value = HARGA_IKAN * (eatenGuppy.getTahapPertumbuhan() +1);
+	int value = PRICE_GUPPY * (eatenGuppy.getTahapPertumbuhan() +1);
 	Coin koin(value, getX(), getY());
 	produceCoin(koin,listCoin);
 }
@@ -78,17 +77,17 @@ void Piranha::moveToFood(double time, LinkedList<Guppy>& listGuppy, LinkedList<C
 					direction = true; // gerak ke kanan
 				}
 
-				if(abs(Guppy_x - piranha_x) <= RADIUS && abs(Guppy_y - piranha_y) <= RADIUS ){
+				if(abs(Guppy_x - piranha_x) <= RADIUS_EAT && abs(Guppy_y - piranha_y) <= RADIUS_EAT ){
 					eat(Guppylock, listGuppy,listCoin);
 				}
 				else{
-					moveXby(this->direction, FISH_SPEED,sudut,time);
-					moveYby(FISH_SPEED,sudut,time);	
+					moveXby(this->direction, SPEED_FISH,sudut,time);
+					moveYby(SPEED_FISH,sudut,time);	
 				}	
 
 			}
 			else { //piranha kenyang
-				if (this->hungerCountdown==maxHungerTime){
+				if (this->hungerCountdown==TIME_MAX_HUNGRY-1){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -97,7 +96,7 @@ void Piranha::moveToFood(double time, LinkedList<Guppy>& listGuppy, LinkedList<C
 				double dx = this->dest_x - this->getX();
 				double dy = this->getY() - this->dest_y;
 				double sudut = 0;
-				if(dx <= RADIUS && dy <= RADIUS){
+				if(dx <= RADIUS_MOVE && dy <= RADIUS_MOVE){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -116,12 +115,12 @@ void Piranha::moveToFood(double time, LinkedList<Guppy>& listGuppy, LinkedList<C
 				else if (dx >0 && dy<0){ //Kuadran 4
 					sudut = atan(abs(dy/dx));
 				}
-				moveXby(this->direction, FISH_SPEED,sudut,time);
-				moveYby(FISH_SPEED,sudut,time);
+				moveXby(this->direction, SPEED_FISH,sudut,time);
+				moveYby(SPEED_FISH,sudut,time);
 			}
 		}
 		else { // tidak ada makanan di akuarium
-			if (this->hungerCountdown==maxHungerTime){
+			if (this->hungerCountdown==TIME_MAX_HUNGRY-1){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -130,7 +129,7 @@ void Piranha::moveToFood(double time, LinkedList<Guppy>& listGuppy, LinkedList<C
 				double dx = this->dest_x - this->getX();
 				double dy = this->getY() - this->dest_y;
 				double sudut = 0;
-				if(dx <= RADIUS && dy <= RADIUS){
+				if(dx <= RADIUS_MOVE && dy <= RADIUS_MOVE){
 					double randx = (rand()%SCREEN_WIDTH);
 					double randy = (rand()%SCREEN_HEIGHT);
 					this->dest_x = randx;
@@ -149,8 +148,8 @@ void Piranha::moveToFood(double time, LinkedList<Guppy>& listGuppy, LinkedList<C
 				else if (dx >0 && dy<0){ //Kuadran 4
 					sudut = atan(abs(dy/dx));
 				}
-				moveXby(this->direction, FISH_SPEED,sudut,time);
-				moveYby(FISH_SPEED,sudut,time);
+				moveXby(this->direction, SPEED_FISH,sudut,time);
+				moveYby(SPEED_FISH,sudut,time);
 		}
 		
 	}

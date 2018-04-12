@@ -14,8 +14,6 @@ protected:
 	bool direction; //jika direction = true, maka ikan menghadap kanan
 	int hungerCountdown; //countdown ketika ikan lapar. Jika nilai =0, maka ikan mati.
 	int fullCountdown; // countdown ketika ikan dalam keadaan kenyang.Jika nilai =0 ikan berubah ke keadaan lapar
-	const int maxFullTime = 2000; //nilai waktu maksimal keadaan kenyang
-	const int maxHungerTime = 1000; //nilai waktu maksimal keadaan lapar
 	double dest_x , dest_y;
 	
 public:
@@ -41,10 +39,6 @@ public:
 	virtual void eat(Food&, LinkedList<Food>&); //method yang mendeskripsikan cara makan ikan
 	void decreaseCountdown();//method untuk mengurangi countdown
 	bool isAlive();//Method yang akan menreturn true jika ikan dalam keadaan hidup dan false jika ikan dalam keadaan false
-	
-	//Operator overloading
-	// bool operator==(Fish&);
-	// Fish& operator=(Fish&);
 };
 
 #endif

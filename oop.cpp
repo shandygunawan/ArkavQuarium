@@ -147,7 +147,7 @@ void handle_input(Guppy& guppyIcon, Guppy& eggIcon, Piranha& piranhaIcon) {
                     Coin dummyCoin;
                     for(int i = 1; i <= Aquarium::listCoin.getSize(); i++){
                         dummyCoin = Aquarium::listCoin.get(i);
-                        if(abs(e.button.x - dummyCoin.getX()) <= TAKE_RADIUS && abs(e.button.y - dummyCoin.getY()) <= TAKE_RADIUS){
+                        if(abs(e.button.x - dummyCoin.getX()) <= RADIUS_TAKE && abs(e.button.y - dummyCoin.getY()) <= RADIUS_TAKE){
                             Money += dummyCoin.getValue();
                             Aquarium::delCoin(dummyCoin);
                         }
@@ -164,15 +164,15 @@ void handle_input(Guppy& guppyIcon, Guppy& eggIcon, Piranha& piranhaIcon) {
                 double distX_eggIcon = abs(eggIcon.getX() - e.button.x);
                 double distY_eggIcon = abs(eggIcon.getY() - e.button.y);
 
-                if( distX_guppyIcon <= INPUT_RADIUS && distY_guppyIcon <= INPUT_RADIUS){
+                if( distX_guppyIcon <= RADIUS_INPUT && distY_guppyIcon <= RADIUS_INPUT){
                     // int x = rand()%(SCREEN_WIDTH);
                     // int y = rand()%(SCREEN_HEIGHT-BOTTOM_OFFSET);
                     Aquarium::buyGuppy();
                 }
-                else if( distX_piranhaIcon <= INPUT_RADIUS && distY_piranhaIcon <= INPUT_RADIUS){
+                else if( distX_piranhaIcon <= RADIUS_INPUT && distY_piranhaIcon <= RADIUS_INPUT){
                     Aquarium::buyPiranha();
                 }
-                else if(distX_eggIcon <= INPUT_RADIUS && distY_eggIcon <= INPUT_RADIUS ) {
+                else if(distX_eggIcon <= RADIUS_INPUT && distY_eggIcon <= RADIUS_INPUT ) {
                     Aquarium::buyEgg();
                 }
                 else {
